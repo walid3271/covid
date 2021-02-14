@@ -1,5 +1,85 @@
 #include<bits/stdc++.h>
+#include <windows.h>  //Imran Library for Top Design
 using namespace std;
+
+/*Imran Top Code Function Starts Here...*/
+
+const int BLUE = 1;
+const int GREEN = 2;
+const int RED = 4;
+const int WHITE = 15;
+
+void clearScreen(int characterLength) {
+	for (int i = 0; i < characterLength; i++) {
+		cout << "\b";
+	}
+}
+
+void changeColour(int colour) {
+	HANDLE hConsole;
+
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, colour);
+}
+
+void showLoadingScreen() {
+	int i;
+	string closed = "- - -", open = "* * *";
+	int colour[] = {RED, GREEN, BLUE};
+
+	cout << closed;
+
+	for (i = 0; i < 3; i++) {
+		Sleep(1000);
+
+		clearScreen(5);
+		changeColour(colour[i]);
+
+		cout << open;
+
+		Sleep(1000);
+
+		clearScreen(5);
+		changeColour(WHITE);
+
+		cout << closed;
+	}
+
+	clearScreen(5);
+	changeColour(WHITE);
+}
+
+void showBlinkingLights() {
+    changeColour(GREEN);
+	cout<< "                                  #################################"<<endl;
+	Sleep(1000);
+
+	changeColour(RED);
+	cout<< "                                        # Welcome to COVID health care. #"<<endl;
+	Sleep(1000);
+
+	changeColour(GREEN);
+	cout<< "                                        #################################"<<endl;
+	Sleep(1000);
+
+	changeColour(BLUE);
+	cout<< "                                        ---------------------------------"<<endl;
+	Sleep(500);
+
+	changeColour(RED);
+    cout<< "                                        | 1 admine panel                |"<<endl;
+    cout<< "                                        | 2 user panel                  |"<<endl;
+    cout<< "                                        | 3 Exit                        |"<<endl;
+	Sleep(500);
+
+	changeColour(BLUE);
+	cout<< "                                        ---------------------------------"<<endl;
+	Sleep(1000);
+
+	changeColour(WHITE);
+}
+
+/*Imran Function End*/
 
 struct COVID
 {
@@ -76,14 +156,24 @@ void user_panel();
 
 int main()
 {
-    cout<< "                                        #################################"<<endl;
-    cout<< "                                        # Welcome to COVID health care. #"<<endl;
-    cout<< "                                        #################################"<<endl;
-    cout<< "                                        ---------------------------------"<<endl;
-    cout<< "                                        | 1 admine panel                |"<<endl;
-    cout<< "                                        | 2 user panel                  |"<<endl;
-    cout<< "                                        | 3 Exit                        |"<<endl;
-    cout<< "                                        ---------------------------------"<<endl;
+    // cout<< "                                        #################################"<<endl;
+    // cout<< "                                        # Welcome to COVID health care. #"<<endl;
+    // cout<< "                                        #################################"<<endl;
+    // cout<< "                                        ---------------------------------"<<endl;
+    // cout<< "                                        | 1 admine panel                |"<<endl;
+    // cout<< "                                        | 2 user panel                  |"<<endl;
+    // cout<< "                                        | 3 Exit                        |"<<endl;
+    // cout<< "                                        ---------------------------------"<<endl;
+    // cout<< "                                        choose your option : ";
+
+    /*Imran Top Code Design Starts Here...*/
+    
+	cout << "\n\n\n";
+	cout << "      ";
+	showLoadingScreen();
+	showBlinkingLights();
+
+	/*Imran Design End*/
     cout<< "                                        choose your option : ";
     int n;
     cin>>n;
